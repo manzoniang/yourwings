@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Your Wings - Agence de communication premium spécialisée en marketing digital et production audiovisuelle.">
+  <meta name="theme-color" content="#00BFDF">
+  <title>Your Wings – Communication & Production Audiovisuelle</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --color-primary: #00BFDF;
+      --color-primary-dark: #0099bb;
+      --color-primary-light: #b3eef8;
+      --color-dark: #0a1628;
+      --color-dark-secondary: #0d1f35;
+      --color-white: #f9f9f6;
+      --color-text-secondary: rgba(249, 249, 246, 0.72);
+      --color-text-tertiary: rgba(249, 249, 246, 0.55);
+      --color-border: rgba(0, 191, 223, 0.15);
+      --color-border-hover: rgba(0, 191, 223, 0.4);
+      --color-overlay-dark: rgba(10, 22, 40, 0.85);
+      --color-overlay-light: rgba(255, 255, 255, 0.04);
+      
+      --font-serif: 'Playfair Display', serif;
+      --font-sans: 'DM Sans', sans-serif;
+      
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.25rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-20: 5rem;
+      --space-28: 7rem;
+      
+      --radius-md: 4px;
+      --radius-lg: 8px;
+      --radius-xl: 12px;
+      --radius-full: 9999px;
+      
+      --shadow-glow: 0 0 20px rgba(0, 191, 223, 0.3);
+      --shadow-glow-lg: 0 0 40px rgba(0, 191, 223, 0.4);
+      
+      --duration-fast: 150ms;
+      --duration-normal: 300ms;
+      --duration-slow: 500ms;
+      --duration-slower: 700ms;
+      
+      --easing-out: cubic-bezier(0, 0, 0.2, 1);
+      --easing-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body { font-family: var(--font-sans); background: var(--color-dark); color: var(--color-white); overflow-x: hidden; line-height: 1.6; }
+
+    @keyframes slideDown { from { transform: translateY(-60px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    @keyframes fadeUp { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes scaleIn { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    @keyframes slideInRight { from { transform: translateX(40px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+    @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 50;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 4rem; background: var(--color-overlay-dark);
+      backdrop-filter: blur(12px); border-bottom: 1px solid var(--color-border);
+      animation: slideDown 0.6s var(--easing-out) both;
+    }
+
+    .nav-logo { display: flex; align-items: center; gap: var(--space-3);
+      font-family: var(--font-serif); font-size: 1.1rem; color: var(--color-white);
+      text-decoration: none; letter-spacing: 0.04em; font-weight: 700;
+    }
+
+    .nav-logo .wing-icon { font-size: 1.5rem; animation: float 3s ease-in-out infinite; }
+    .nav-logo em { font-style: italic; font-size: 0.85em; margin-left: 0.25rem; color: var(--color-primary); }
+
+    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+    .nav-links a { color: var(--color-text-secondary); text-decoration: none; font-size: 0.88rem;
+      font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
+      transition: color var(--duration-fast) var(--easing-out); position: relative; padding: var(--space-2) 0;
+    }
+
+    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px;
+      background: linear-gradient(90deg, var(--color-primary), transparent);
+      transition: width var(--duration-normal) var(--easing-out);
+    }
+
+    .nav-links a:hover { color: var(--color-primary); }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+      padding: 0 4rem; background: linear-gradient(135deg, var(--color-dark) 55%, #003344 100%);
+      position: relative; overflow: hidden; margin-top: 60px; gap: var(--space-16);
+    }
+
+    #hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 70% 50%, rgba(0, 191, 223, 0.08) 0%, transparent 70%);
+      pointer-events: none; z-index: 1;
+    }
+
+    .hero-content { position: relative; z-index: 2; animation: fadeUp 0.9s 0.2s var(--easing-out) both; max-width: 600px; }
+
+    .hero-tag {
+      display: inline-block; background: linear-gradient(135deg, rgba(0, 191, 223, 0.15) 0%, rgba(0, 191, 223, 0.08) 100%);
+      border: 1px solid var(--color-border-hover); border-radius: var(--radius-full);
+      padding: var(--space-3) var(--space-4); font-size: 0.75rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--color-primary); margin-bottom: var(--space-6);
+      font-weight: 600; backdrop-filter: blur(8px); animation: scaleIn 0.6s 0.3s var(--easing-out) both;
+    }
+
+    .hero-title {
+      font-family: var(--font-serif); font-size: clamp(2.5rem, 6vw, 4.5rem);
+      line-height: 1.1; font-weight: 800; margin-bottom: var(--space-6);
+      letter-spacing: -0.02em; background: linear-gradient(135deg, var(--color-white) 0%, #e8e8e5 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      animation: fadeUp 0.9s 0.4s var(--easing-out) both;
+    }
+
+    .hero-title em { font-style: italic; background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 1rem; color: var(--color-text-secondary); max-width: 450px;
+      line-height: 1.7; margin-bottom: var(--space-10); animation: fadeUp 0.9s 0.5s var(--easing-out) both;
+    }
+
+    .cta-group { display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeUp 0.9s 0.6s var(--easing-out) both; }
+
+    .btn-primary { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+      color: var(--color-dark); padding: 0.95rem 2rem; border-radius: var(--radius-md);
+      font-weight: 600; font-size: 0.9rem; text-decoration: none; border: none; cursor: pointer;
+      box-shadow: var(--shadow-glow); transition: all var(--duration-normal) var(--easing-out);
+      position: relative; overflow: hidden; display: inline-flex; align-items: center;
+    }
+
+    .btn-primary::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transform: translateX(-100%); transition: transform var(--duration-normal) var(--easing-out);
+    }
+
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: var(--shadow-glow-lg); }
+    .btn-primary:hover::before { transform: translateX(100%); }
+
+    .btn-ghost {
+      border: 2px solid var(--color-border-hover); color: var(--color-white);
+      padding: 0.95rem 2rem; border-radius: var(--radius-md); font-weight: 500; font-size: 0.9rem;
+      text-decoration: none; background: transparent; cursor: pointer; display: inline-flex;
+      align-items: center; transition: all var(--duration-normal) var(--easing-out);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--color-primary); color: var(--color-primary);
+      background: rgba(0, 191, 223, 0.05); box-shadow: var(--shadow-glow);
+    }
+
+    .hero-visual {
+      position: relative; display: flex; justify-content: center; align-items: center;
+      height: 100%; animation: slideInRight 0.9s 0.4s var(--easing-out) both;
+    }
+
+    .hero-visual::before {
+      content: ''; position: absolute; inset: -50px;
+      background: radial-gradient(circle, rgba(0, 191, 223, 0.15) 0%, transparent 70%);
+      animation: pulse 4s ease-in-out infinite; z-index: 0;
+    }
+
+    .wings-svg {
+      width: min(450px, 90%); height: auto; position: relative; z-index: 1;
+      filter: drop-shadow(0 0 40px rgba(0, 191, 223, 0.3)); animation: float 4s ease-in-out infinite;
+    }
+
+    /* SECTIONS */
+    section { padding: 7rem 4rem; position: relative; overflow: hidden; }
+
+    .section-label { font-size: 0.75rem; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--color-primary); margin-bottom: 0.7rem; font-weight: 600;
+    }
+
+    .section-title {
+      font-family: var(--font-serif); font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800; line-height: 1.15; margin-bottom: var(--space-6); letter-spacing: -0.02em;
+    }
+
+    .section-body { color: var(--color-text-secondary); line-height: 1.8; max-width: 600px; }
+
+    /* ABOUT */
+    #about {
+      background: var(--color-dark-secondary); display: grid; grid-template-columns: 1fr 1fr;
+      gap: var(--space-20); align-items: center;
+    }
+
+    #about::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--color-border), transparent);
+    }
+
+    .about-stats { display: flex; gap: var(--space-12); margin-top: var(--space-10); flex-wrap: wrap; }
+
+    .stat-item {
+      flex-shrink: 0; padding: var(--space-4); background: linear-gradient(135deg, rgba(0, 191, 223, 0.05) 0%, transparent 100%);
+      border-radius: var(--radius-lg); border: 1px solid var(--color-border);
+      transition: all var(--duration-normal) var(--easing-out);
+    }
+
+    .stat-item:hover {
+      background: linear-gradient(135deg, rgba(0, 191, 223, 0.12) 0%, transparent 100%);
+      border-color: var(--color-border-hover); transform: translateY(-4px);
+    }
+
+    .stat-num {
+      font-family: var(--font-serif); font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800; background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1;
+    }
+
+    .stat-label { font-size: 0.8rem; color: rgba(249, 249, 246, 0.5); letter-spacing: 0.06em; margin-top: 0.2rem; text-transform: uppercase; }
+
+    .about-visual {
+      position: relative; border-radius: var(--radius-xl); overflow: hidden; aspect-ratio: 1 / 0.9;
+      background: linear-gradient(145deg, rgba(0, 191, 223, 0.08) 0%, rgba(92, 58, 30, 0.08) 100%);
+      border: 1px solid var(--color-border); display: flex; flex-direction: column; justify-content: center;
+      align-items: center; gap: var(--space-6); padding: 3rem; backdrop-filter: blur(8px);
+    }
+
+    .quote-mark { font-family: var(--font-serif); font-size: 7rem; color: var(--color-primary);
+      opacity: 0.15; line-height: 0.6; align-self: flex-start; position: relative; z-index: 1;
+    }
+
+    .quote-text { font-family: var(--font-serif); font-style: italic; font-size: 1.5rem;
+      color: var(--color-white); line-height: 1.4; text-align: center; position: relative; z-index: 1;
+    }
+
+    .quote-attribution { color: rgba(249, 249, 246, 0.45); font-size: 0.85rem; letter-spacing: 0.08em;
+      text-transform: uppercase; font-style: normal; position: relative; z-index: 1; font-weight: 600;
+    }
+
+    /* SERVICES */
+    #services { background: var(--color-dark); }
+
+    #services::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--color-border), transparent);
+    }
+
+    .services-header { margin-bottom: 4rem; }
+
+    .services-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;
+    }
+
+    .service-card {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(0, 191, 223, 0.02) 100%);
+      border: 1px solid var(--color-border); border-radius: var(--radius-xl); padding: 2rem;
+      transition: all var(--duration-normal) var(--easing-out); position: relative; overflow: hidden;
+    }
+
+    .service-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(0, 191, 223, 0.1) 0%, transparent 60%);
+      opacity: 0; transition: opacity var(--duration-normal) var(--easing-out); pointer-events: none;
+    }
+
+    .service-card:hover {
+      background: linear-gradient(135deg, rgba(0, 191, 223, 0.08) 0%, rgba(0, 191, 223, 0.03) 100%);
+      border-color: rgba(0, 191, 223, 0.3); transform: translateY(-8px); box-shadow: var(--shadow-glow);
+    }
+
+    .service-card:hover::before { opacity: 1; }
+
+    .service-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; position: relative; z-index: 1;
+      transition: transform var(--duration-normal) var(--easing-out);
+    }
+
+    .service-card:hover .service-icon { transform: scale(1.1) rotate(5deg); }
+
+    .service-name { font-weight: 600; font-size: 1rem; margin-bottom: 0.5rem; color: var(--color-white); position: relative; z-index: 1; }
+
+    .service-desc { font-size: 0.85rem; color: var(--color-text-tertiary); line-height: 1.6; position: relative; z-index: 1; }
+
+    /* CONTACT */
+    #contact {
+      background: var(--color-dark-secondary); text-align: center; display: flex; flex-direction: column; align-items: center;
+    }
+
+    #contact::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--color-border), transparent);
+    }
+
+    .contact-card { margin-top: 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-width: 800px; width: 100%; }
+
+    .contact-item {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(0, 191, 223, 0.02) 100%);
+      border: 1px solid var(--color-border); border-radius: var(--radius-xl); padding: 2rem;
+      display: flex; flex-direction: column; gap: 0.5rem; transition: all var(--duration-normal) var(--easing-out);
+    }
+
+    .contact-item:hover {
+      border-color: var(--color-primary); background: linear-gradient(135deg, rgba(0, 191, 223, 0.08) 0%, rgba(0, 191, 223, 0.02) 100%);
+      transform: translateY(-4px); box-shadow: var(--shadow-glow);
+    }
+
+    .contact-icon { font-size: 1.6rem; position: relative; z-index: 1; transition: transform var(--duration-normal) var(--easing-out); }
+    .contact-item:hover .contact-icon { transform: scale(1.2); }
+
+    .contact-label { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--color-primary); font-weight: 600; position: relative; z-index: 1;
+    }
+
+    .contact-value {
+      font-weight: 500; font-size: 1rem; color: var(--color-white); word-break: break-all;
+      text-decoration: none; transition: color var(--duration-fast) var(--easing-out);
+      position: relative; z-index: 1; display: inline-block;
+    }
+
+    .contact-value:hover { color: var(--color-primary); }
+
+    .contact-cta {
+      display: inline-block; margin-top: 3rem; background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+      color: var(--color-dark); font-weight: 700; font-size: 1rem; padding: 1.2rem 3.5rem;
+      border-radius: var(--radius-md); text-decoration: none; transition: all var(--duration-normal) var(--easing-out));
+      box-shadow: var(--shadow-glow-lg); border: none; cursor: pointer; position: relative; overflow: hidden;
+    }
+
+    .contact-cta::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+      transform: translateX(-100%); transition: transform var(--duration-normal) var(--easing-out);
+    }
+
+    .contact-cta:hover { transform: translateY(-4px); box-shadow: 0 0 50px rgba(0, 191, 223, 0.6); }
+    .contact-cta:hover::before { transform: translateX(100%); }
+
+    /* FOOTER */
+    footer {
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), rgba(0, 22, 40, 0.3));
+      padding: 3rem 4rem; display: flex; justify-content: space-between; align-items: center;
+      border-top: 1px solid var(--color-border); font-size: 0.82rem; color: rgba(249, 249, 246, 0.4);
+      flex-wrap: wrap; gap: 2rem;
+    }
+
+    footer strong { color: var(--color-white); font-weight: 700; }
+    footer em { color: var(--color-primary); font-style: italic; }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity var(--duration-slower) var(--easing-out), transform var(--duration-slower) var(--easing-out); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ACCESSIBILITY */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      nav { padding: 1rem 3rem; }
+      .nav-links { gap: 1.5rem; }
+      #hero { grid-template-columns: 1fr; padding: 7rem 3rem 4rem; gap: 3rem; }
+      .hero-visual { display: none; }
+      section { padding: 5rem 3rem; }
+      #about { grid-template-columns: 1fr; gap: 3rem; }
+      .contact-card { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      #hero { padding: 7rem 1.5rem 4rem; }
+      .hero-title { font-size: 2rem; }
+      .hero-sub { font-size: 0.9rem; }
+      .cta-group { flex-direction: column; width: 100%; }
+      .btn-primary, .btn-ghost { width: 100%; }
+      section { padding: 4rem 1.5rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      .contact-card { grid-template-columns: 1fr; gap: 1rem; }
+      footer { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav role="navigation" aria-label="Navigation principale">
+    <a class="nav-logo" href="#hero">
+      <span class="wing-icon" aria-hidden="true">🪽</span>
+      <span>Your Wings <em>com &amp; trip</em></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">À propos</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="hero" aria-label="Section héroïque">
+    <div class="hero-content">
+      <div class="hero-tag">Agence de Communication</div>
+      <h1 class="hero-title">Nous donnons des <em>ailes</em><br>à vos rêves</h1>
+      <p class="hero-sub">Spécialisée en Marketing Digital et Production Audiovisuelle, Your Wings transforme vos projets en succès durables.</p>
+      <div class="cta-group">
+        <a href="#services" class="btn-primary">Nos services</a>
+        <a href="#contact" class="btn-ghost">Nous contacter</a>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <svg class="wings-svg" viewBox="0 0 480 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="wg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#b3eef8" />
+            <stop offset="100%" stop-color="#00BFDF" />
+          </linearGradient>
+        </defs>
+        <path d="M240 130 C200 80 120 30 20 60 C60 90 90 110 100 140 C70 120 30 115 10 130 C50 140 90 138 105 158 C80 150 40 155 25 170 C65 170 100 162 115 178 C100 195 240 190 240 160 Z" fill="url(#wg)" opacity="0.9" />
+        <path d="M240 130 C280 80 360 30 460 60 C420 90 390 110 380 140 C410 120 450 115 470 130 C430 140 390 138 375 158 C400 150 440 155 455 170 C415 170 380 162 365 178 C380 195 240 190 240 160 Z" fill="url(#wg)" opacity="0.9" />
+        <ellipse cx="240" cy="160" rx="18" ry="28" fill="#00BFDF" opacity="0.6" />
+        <circle cx="240" cy="140" r="8" fill="white" opacity="0.5" />
+      </svg>
+    </div>
+  </section>
+
+  <section id="about" aria-label="À propos de nous">
+    <div class="reveal">
+      <div class="section-label">À propos de nous</div>
+      <h2 class="section-title">Une agence créative<br>à votre service</h2>
+      <p class="section-body">Nous sommes une agence de Communication spécialisée en Marketing Digital et Production Audiovisuelle. Nous proposons des solutions créatives sur mesure aux professionnels pour leur permettre d'atteindre leurs objectifs en termes de visibilité et de développement commercial.</p>
+      <p class="section-body" style="margin-top: 1rem;">Nous misons sur notre créativité et notre expertise technique pour développer votre image de marque avec style et faire grimper votre part de marché.</p>
+      <div class="about-stats">
+        <div class="stat-item">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Sur mesure</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">2</div>
+          <div class="stat-label">Pôles d'expertise</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">∞</div>
+          <div class="stat-label">Créativité</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-visual reveal">
+      <div class="quote-mark" aria-hidden="true">"</div>
+      <p class="quote-text">Donnez des ailes à vos projets</p>
+      <p class="quote-attribution">— Your Wings Com &amp; Trip</p>
+    </div>
+  </section>
+
+  <section id="services" aria-label="Nos services">
+    <div class="services-header reveal">
+      <div class="section-label">Ce que nous faisons</div>
+      <h2 class="section-title">Nos Services</h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <span class="service-icon" aria-hidden="true">📊</span>
+        <h3 class="service-name">Digital Strategy</h3>
+        <p class="service-desc">Élaboration de stratégies digitales performantes adaptées à vos objectifs.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-icon" aria-hidden="true">💬</span>
+        <h3 class="service-name">Community Management</h3>
+        <p class="service-desc">Animation et gestion de vos communautés sur les réseaux sociaux.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-icon" aria-hidden="true">📡</span>
+        <h3 class="service-name">Couverture Digitale</h3>
+        <p class="service-desc">Couverture en temps réel de vos événements sur les plateformes numériques.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-icon" aria-hidden="true">🎯</span>
+        <h3 class="service-name">Campagne Digitale</h3>
+        <p class="service-desc">Création et pilotage de campagnes publicitaires en ligne à fort impact.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-icon" aria-hidden="true">🎬</span>
+        <h3 class="service-name">Film Institutionnel</h3>
+        <p class="service-desc">Production de films institutionnels qui valorisent votre marque et votre identité.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-icon" aria-hidden="true">📰</span>
+        <h3 class="service-name">Publireportage – Publicité</h3>
+        <p class="service-desc">Contenus éditoriaux et publicitaires qui captivent et convertissent.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-icon" aria-hidden="true">🎥</span>
+        <h3 class="service-name">Documentaire</h3>
+        <p class="service-desc">Réalisation de documentaires engageants racontant votre histoire.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-icon" aria-hidden="true">📻</span>
+        <h3 class="service-name">Campagne Audiovisuelle</h3>
+        <p class="service-desc">Création de contenus audiovisuels multicanaux pour toucher votre audience.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-icon" aria-hidden="true">🎙️</span>
+        <h3 class="service-name">Capsule – Voix-off</h3>
+        <p class="service-desc">Production de capsules vidéo et d'enregistrements voix-off professionnels.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-icon" aria-hidden="true">📋</span>
+        <h3 class="service-name">Relation Presse</h3>
+        <p class="service-desc">Gestion de vos relations avec les médias pour une visibilité maximale.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" aria-label="Nous contacter">
+    <div class="reveal">
+      <div class="section-label">Travaillons ensemble</div>
+      <h2 class="section-title">Contactez-nous</h2>
+      <p class="section-body" style="text-align: center; margin: 0 auto;">Prêt à donner des ailes à votre projet ? Notre équipe est à votre disposition pour transformer vos idées en réalité.</p>
+    </div>
+    <div class="contact-card reveal">
+      <div class="contact-item">
+        <span class="contact-icon" aria-hidden="true">📞</span>
+        <div class="contact-label">Téléphone</div>
+        <a href="tel:+33629029235" class="contact-value">+33 6 29 02 92 35</a>
+        <a href="tel:+221772894165" class="contact-value">+221 77 289 41 65</a>
+      </div>
+      <div class="contact-item">
+        <span class="contact-icon" aria-hidden="true">✉️</span>
+        <div class="contact-label">Email</div>
+        <a href="mailto:yourwingscom28@gmail.com" class="contact-value">yourwingscom28@gmail.com</a>
+      </div>
+    </div>
+    <a href="mailto:yourwingscom28@gmail.com" class="contact-cta reveal">Envoyer un message</a>
+  </section>
+
+  <footer role="contentinfo">
+    <div><span aria-hidden="true">🪽</span> <strong>Your Wings</strong> <em>com &amp; trip</em></div>
+    <div>Nous donnons des ailes à vos rêves</div>
+    <div>© 2026 Your Wings. Tous droits réservés.</div>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observerOptions = { threshold: 0.15, rootMargin: '0px 0px -50px 0px' };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+    reveals.forEach((el) => observer.observe(el));
+
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href !== '#' && document.querySelector(href)) {
+          e.preventDefault();
+          document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
